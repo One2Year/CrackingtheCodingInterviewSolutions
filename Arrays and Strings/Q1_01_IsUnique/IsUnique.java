@@ -5,6 +5,8 @@
  *
  */
 
+import java.util.Arrays;
+
 class IsUnique {
     /**
      * 1. BF without additional data structures
@@ -21,10 +23,41 @@ class IsUnique {
         return true;
     }
 
+    /**
+     * 2. Sort - Input will be changed.
+     * Time : O(nlgn)
+     * Space : O(1) which depends on sort algorithm
+    */
+    public static boolean isUniqueSort (String str) {
+        char tempArray[] = str.toCharArray();
+        Arrays.sort(tempArray);
+        for (int i = 0; i < tempArray.length - 1; ++i) {
+            if (tempArray[i] == tempArray[i + 1]) return false;
+        }
+        return true;
+    }
+
+
+    /**
+     * 3. Char Set
+     * Time : O(n)
+     * Space : O(n)
+    */
+    public static boolean isUniqueChar (String str) {
+        if (str.length() > 128) return false;
+        boolean[] charSet = new boolean[128];
+        for(int i = 0; i < str.length(); ++i) {
+            int val = str.charAt(i);
+            if (charSet[val]) return false;
+            charSet[val] = true;
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         String[] test = {"", "abc", "abbc"};
         for (String t : test) {
-            System.out.println(t + " : " + isUniqueBF(t));
+            System.out.println(t + " : " + isUniqueChar(t));
         }
     }
 
