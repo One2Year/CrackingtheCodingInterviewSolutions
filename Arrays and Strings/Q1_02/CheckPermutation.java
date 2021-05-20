@@ -25,6 +25,11 @@ class CheckPermutation {
         return true;
     }
 
+    /**
+     * 1. Map
+     * Time : O(n)
+     * Space : O(n)
+    */
     public static boolean checkPermutaionMap(String s1, String s2) {
         if (s1.length() != s2.length()) return false;
 
@@ -40,11 +45,6 @@ class CheckPermutation {
         return true;
     }
 
-    /**
-     * 1. Map
-     * Time : O(n)
-     * Space : O(n)
-    */
     public static void main (String[] args) {
         String[][] test = {{"abc", "cba"}, {"abcd","abcc"}, {" ", "a"}};
         for(String[] t : test) {
